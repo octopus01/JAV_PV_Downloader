@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="spring-io:jar">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="spring-io.jar">
+      <element id="module-output" name="spring-io" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

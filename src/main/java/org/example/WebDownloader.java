@@ -31,7 +31,7 @@ public class WebDownloader {
                 urlConnection.connect();
                 InputStream stream = urlConnection.getInputStream();
                 int totalSize = urlConnection.getContentLength();
-                System.out.println("开始下载"+banngou+" 大小："+totalSize);
+                System.out.println("开始下载"+banngou+" 大小："+totalSize/1024/1024+'M');
                 OutputStream out = openOutputStream(new File(path));
                 int count;
                 int n ;
@@ -39,8 +39,9 @@ public class WebDownloader {
                 byte[] buffer = new byte[bufferSize];
                 for(count = 0; -1 != (n = stream.read(buffer)); count += n) {
                     out.write(buffer, 0, n);
-//                    progressBar.show(count,totalSize);
+//                    progressBar.show(count,totalSize); 多线程下不应该这样使用
                 }
+                out.flush();
                 stream.close();
                 out.close();
                 System.out.println(banngou+":完成下载");

@@ -18,7 +18,7 @@ public class JvmInfo {
         return Runtime.getRuntime();
     }
 
-    public Integer getCPU_CORES() {
+    public Integer getCpuCores() {
         return getRuntime().availableProcessors();
     }
 

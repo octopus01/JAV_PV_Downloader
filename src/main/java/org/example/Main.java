@@ -1,10 +1,8 @@
 package org.example;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String line;
-        System.out.println("是否开启代理 Y/N");
+        System.out.println("是否开启本地代理 Y/N");
         line = scanner.nextLine();
         if (line.equals("Y") || line.equals("y")) {
             System.out.println("选择代理类型 1.http 2.sock");
@@ -28,7 +26,7 @@ public class Main {
                 ProxySettings.socks(line);
             }
         }
-//        ProxySettings.socks("10808");
+
         System.out.println("请输入番号：如 ssis-557");
         JvmInfo jvmInfo = JvmInfo.getJvmInfo();
 
@@ -42,7 +40,7 @@ public class Main {
                 else banngous.add(line);
             }
             System.out.println(banngous);
-            int corePoolSize = jvmInfo.getCPU_CORES() * 2;
+            int corePoolSize = jvmInfo.getCpuCores() * 2;
             int maximumPoolSize = Math.max(banngous.size() + 1, corePoolSize);
             ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize, maximumPoolSize,
                     10, TimeUnit.SECONDS, new LinkedBlockingQueue<>(4));
@@ -57,3 +55,4 @@ public class Main {
         }
     }
 }
+
